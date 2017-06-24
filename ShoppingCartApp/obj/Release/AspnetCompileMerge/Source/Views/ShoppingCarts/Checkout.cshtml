@@ -1,0 +1,419 @@
+﻿@model IEnumerable<ShoppingCartApp.Models.ShoppingCart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart App</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+    <!--Custom-Theme-files-->
+    <!--theme-style-->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
+    <link href="~/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+    <!--top-header-->
+    <!--bottom-header-->
+    <!--banner-starts-->
+    <div class="bnr" id="home">
+        <div id="top" class="callbacks_container">
+            <ul class="rslides" id="slider4">
+                <li>
+                    <img src="/images/bnr-1.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="/images/bnr-2.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="/images/bnr-3.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    @*@using (Html.BeginForm())
+        {*@
+    @*@Html.AntiForgeryToken()
+        //foreach (var i in Model)
+        //{*@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*@Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.CustomerId)
+                    @Html.HiddenFor(model => model.ItemId)
+                    @Html.HiddenFor(model => model.Created)*@
+                @*<div class="col-md-2">
+                        @Html.DisplayNameFor(model => model.ItemId)
+                    </div>*@
+                @*<div class="col-md-2">
+                        @Html.DisplayNameFor(model => model.Item.MediaUrl)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(model => model.Item.Price)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DisplayNameFor(model => model.Count)
+                    </div>*@
+                @*<div class="col-md-2">
+                        @Html.DisplayNameFor(model => model.Item.)
+                    </div>*@
+                <div class="col-md-2">
+
+                </div>
+                <hr style="height:2px;background-color:black">
+                <br />
+
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-3">
+
+                            @*@if (item.Item.MediaUrl != null)
+                            {
+                                <img width="200" height="230" alt="poster_1_up" class="shop_thumbnail" src="@Url.Content(item.Item.MediaUrl)" />
+
+                            }*@
+                        </div>
+                        <div class="col-md-2">
+                            <h3>@Html.DisplayFor(model => item.Item.Name) </h3>
+                            <h3> @Html.DisplayNameFor(model => model.Item.Price) :</h3>
+                            <h4>$ @Html.DisplayFor(model => item.Item.Price)</h4>
+                            <br />
+                            @Html.DisplayNameFor(model => model.Count)
+                            @*@using (Html.BeginForm("Quantity", "ShoppingCarts", new { ItemId = item.shoppingcart.ItemId }, FormMethod.Post))
+                                {
+                                    <input min="1" type="number" id="quantity" name="quantity" value="@Html.DisplayFor(model => item.shoppingcart.Count)" class="form-control input-small">
+                                    <input class="btn btn-primary" type="submit" value="Adjust Qty" />
+                                }*@
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </div>
+                    </div>
+                    <hr style="height:2px;background-color:black">
+                    <br />
+                }
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-2">
+                        @if (Model.Count() == 0)
+                        {
+                            <h3>Total Price:</h3><h4>$ @ViewBag.Message</h4>
+                        }
+                        else
+                        {
+                            <h3>Total Price:</h3><h4>$ @ViewBag.num</h4>
+                        }
+                    </div>
+                    @*<div class="col-md-2">
+                            <input type="submit" value="Save Changes" class="btn btn-default" />
+                        </div>*@
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+            </div>
+            <div class="cart-total">
+                <br />
+                @foreach (var i in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="row">
+                            <center><h4>Order Details</h4></center>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Address</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @i.order.Address
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>City</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @i.order.City
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>State</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @i.order.State
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Zip Code</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @i.order.Zipcode
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Country</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @i.order.Country
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Phone Number</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @i.order.Phone
+                            </div>
+                        </div>
+
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                        {
+
+                            <center><input class="btn btn-warning" type="submit" value="Continue Shopping" /></center>
+
+                        }
+
+                        <br />
+                        <br />
+                        <h3><b>Price Details</b></h3>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Total</h4>
+                            </div>
+                            <div class="col-md-6">
+                                @if (Model.Count() == 0)
+                                {
+                                    <h4>$ @ViewBag.Message</h4>
+                                }
+                                else
+                                {
+                                    <h4>$ @ViewBag.num</h4>
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Delivery Charge</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>$150.00</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <hr style="height:1px;background-color:black">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><b>Total Price</b></h4>
+                            </div>
+                            <div class="col-md-6">
+                                @if (Model.Count() == 0)
+                                {
+                                    <h4>$ @ViewBag.Message</h4>
+                                }
+                                else
+                                {
+                                    <h4>$ @ViewBag.total</h4>
+                                }
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+
+                            <center><input type="button" class="btn btn-primary" value="CheckOut" onclick="location.href='@Url.Action("Create", "Orders")'" /></center>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+    @*}*@
+    @*}*@
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+
+                </tr>
+            }
+
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <h3><strong><u>Total Price:</u></strong></h3>
+                </td>
+                <td>
+                    <span class="simpleCart_total"></span>
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+
+            </tr>
+
+
+        </table>*@
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <div class="information">
+        <div class="container">
+            <div class="infor-top">
+                <div class="col-md-3 infor-left">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+                        <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+                        <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                </div>
+                <div class="col-md-3 infor-left">
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Store Information</h3>
+                    <h4>
+                        Bob's Top Quality Discount Watches For You,
+                        <span>1231 Shields Rd,</span>
+                        Kernersville, NC 27127.
+                    </h4>
+                    <h5>336 555 1543</h5>
+                    <p><a href="mailto:example@email.com">bobsdiscountwatches@example.com</a></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--information-end-->
+    <!--footer-starts-->
+    <!--footer-end-->
+    @section scripts {
+
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--start-menu-->
+        <script src="~/js/simpleCart.min.js"> </script>
+        <script type="text/javascript" src="~/js/memenu.js"></script>
+        <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+        <!--dropdown-->
+        <script src="~/js/jquery.easydropdown.js"></script>
+        <script src="~/js/responsiveslides.min.js"></script>
+        <script>
+
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 4
+                $("#slider4").responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    before: function () {
+                        $('.events').append("<li>before event fired.</li>");
+                    },
+                    after: function () {
+                        $('.events').append("<li>after event fired.</li>");
+                    }
+                });
+
+            });
+        </script>
+    }
+</body>
+
+</html>

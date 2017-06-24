@@ -1,0 +1,317 @@
+﻿@model IEnumerable<ShoppingCartApp.Models.Item>
+
+
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shopping Cart App</title>
+<link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+
+<!--Custom-Theme-files-->
+<!--theme-style-->
+<link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
+<link href="~/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+    <!--top-header-->
+    <!--bottom-header-->
+    <!--banner-starts-->
+    <div class="bnr" id="home">
+        <div id="top" class="callbacks_container">
+            <ul class="rslides" id="slider4">
+                <li>
+                    <img src="/images/bnr-1.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="/images/bnr-2.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="/images/bnr-3.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!--banner-ends-->
+    <!--Slider-Starts-Here-->
+    <!--End-slider-script-->
+    <!--about-starts-->
+    <div class="about">
+        <div class="container">
+            <div class="about-top grid-1">
+                <div class="col-md-4 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="/images/abt-1.jpg" alt="" />
+                        <figcaption>
+                            <h2>Style</h2>
+                            <p>Impeccable looks that are surpassed by no other</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-4 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="/images/abt-2.jpg" alt="" />
+                        <figcaption>
+                            <h4>Quality</h4>
+                            <p>Functionality that will last a lifetime</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-4 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="/images/abt-3.jpg" alt="" />
+                        <figcaption>
+                            <h4>Value</h4>
+                            <p>Prices that will make you feel like genius</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    @{if (User.IsInRole("Admin"))
+            {
+
+            <center>@Html.ActionLink("Create New", "Create", "Items")</center>
+        }
+    }
+    <!--about-end-->
+    <!--product-starts-->
+    <div class="product">
+        <div class="container">
+            <div class="product-top">
+                <div class="product-one">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 product-left">
+                            <div class="product-main simpleCart_shelfItem">
+
+                                <a href="@Url.Action("Details", "Items", new { id = item.Id })" class="mask"><img class="img-responsive zoom-img" src="@Url.Content(item.MediaUrl)" alt="" /></a>
+                                <div class="product-bottom">
+                                    <h3>@item.Name</h3>
+                                    <p>Explore Now</p>
+                                    <h4><a class="item_add" href="#"><i></i></a> <span class="item_price">@item.Price</span></h4>
+                                </div>
+                                
+                                    @using (Html.BeginForm("Create", "ShoppingCarts", new { itemid = item.Id }, FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <input class="button item_add item_price" type="submit" value="Add To Cart" />
+                                    }
+
+                                
+                                @*<a href="@Url.Action("Login", "Account")" class="button">Add To Cart</a>*@
+
+                            </div>
+                            <br />
+                        </div>
+                    }
+
+                    
+                    @*<div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-2.png" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-3.png"  alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-4.png" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="product-one">
+                            <div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-5.png" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-6.png" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-7.png" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 product-left">
+                                <div class="product-main simpleCart_shelfItem">
+                                    <a href="~/home/single" class="mask"><img class="img-responsive zoom-img" src="/images/p-8.png" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <h3>Smart Watches</h3>
+                                        <p>Explore Now</p>
+                                        <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                                    </div>
+                                    <div class="srch">
+                                        <span>-50%</span>
+                                    </div>
+                                </div>
+                            </div>*@
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!--product-end-->
+    <!--information-starts-->
+    <div class="information">
+        <div class="container">
+            <div class="infor-top">
+                <div class="col-md-3 infor-left">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+                        <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+                        <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                </div>
+                <div class="col-md-3 infor-left">
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Store Information</h3>
+                    <h4>
+                        Bob's Top Quality Discount Watches For You,
+                        <span>1231 Shields Rd,</span>
+                        Kernersville, NC 27127.
+                    </h4>
+                    <h5>336 555 1543</h5>
+                    <p><a href="mailto:example@email.com">bobsdiscountwatches@example.com</a></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--information-end-->
+    <!--footer-starts-->
+    <!--footer-end-->
+    @section scripts {
+
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--start-menu-->
+        <script src="~/js/simpleCart.min.js"> </script>
+        <script type="text/javascript" src="~/js/memenu.js"></script>
+        <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+        <!--dropdown-->
+        <script src="~/js/jquery.easydropdown.js"></script>
+        <script src="~/js/responsiveslides.min.js"></script>
+        <script>
+
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 4
+                $("#slider4").responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    before: function () {
+                        $('.events').append("<li>before event fired.</li>");
+                    },
+                    after: function () {
+                        $('.events').append("<li>after event fired.</li>");
+                    }
+                });
+
+            });
+        </script>
+    }
+</body>
+</html>
+
+@*@foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DipalyFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DipalyFor(modelItem => item.MediaURL)
+            </td>
+            <td>
+                @Html.DipalyFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DipalyFor(modelItem => item.Something)
+            </td>
+            <td>
+                @Html.DipalyFor(modelItem => item.Created)
+            </td>
+        </tr>
+
+    @Html.DisplayNameFor(model => 
+    }*@

@@ -1,0 +1,237 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Shopping Cart App</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-main">
+                <div class="col-md-1 total">
+                </div>
+                <div class="col-md-7 total">
+                </div>
+                <div class="col-md-4">
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+
+                @*<div class="col-md-6 top-header-left">
+                        <div class="cart box_1">
+                            <a href="@Url.Action("index", "ShoppingCarts")">
+                                <div class="total">
+                                    @{Html.RenderAction("PartialView", "ShoppingCarts"); }
+                                </div>
+                                <img src="/images/cart-1.png" alt="" />
+                            </a>
+                            <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                            <div class="clearfix"> </div>
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>*@
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
+    <!--start-logo-->
+
+    <div class="logo">
+        <a href="@Url.Action("Index", "Home")"><h1>Luxury Watches</h1></a>
+    </div>
+    <!--start-logo-->
+    <!--bottom-header-->
+    @*<div class="header-bottom">
+        <div class="container">
+            <div class="header">
+                <div class="col-md-9 header-left">
+                    <div class="top-nav">
+                        <ul class="memenu skyblue">
+                            <li class="active"><a href="~/index.html">Home</a></li>
+                            <li class="grid">
+                                <a href="#">Men</a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Shop</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">New Arrivals</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Blazers</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Swem Wear</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Accessories</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Handbags</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">T-Shirts</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Watches</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">My Shopping Bag</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Style Zone</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">Shoes</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Watches</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Brands</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Coats</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Accessories</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Trousers</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Popular Brands</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">499 Store</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Fastrack</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Casio</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Fossil</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Maxima</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Timex</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">TomTom</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Titan</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Women</a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Shop</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">New Arrivals</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Blazers</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Swem Wear</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Accessories</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Handbags</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">T-Shirts</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Watches</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">My Shopping Bag</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Style Zone</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">Shoes</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Watches</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Brands</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Coats</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Accessories</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Trousers</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Popular Brands</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">499 Store</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Fastrack</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Casio</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Fossil</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Maxima</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Timex</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">TomTom</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Titan</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Kids</a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Shop</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">New Arrivals</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Blazers</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Swem Wear</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Accessories</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Handbags</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">T-Shirts</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Watches</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">My Shopping Bag</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Style Zone</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">Shoes</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Watches</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Brands</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Coats</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Accessories</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Trousers</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Popular Brands</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("products", "Home")">499 Store</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Fastrack</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Casio</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Fossil</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Maxima</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Timex</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">TomTom</a></li>
+                                                <li><a href="@Url.Action("products", "Home")">Titan</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="~/typo.html">Blog</a>
+                            </li>
+                            <li class="grid">
+                                <a href="~/contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>*@
+    @*<div class="col-md-3 header-right">
+                        <div class="search-bar">
+                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                            <input type="submit" value="Click Me">
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="footer">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="col-md-6 footer-left">
+                        <form>
+                            <input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+                            <input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+                    <div class="col-md-6 footer-right">
+                        <p>© 2015 Luxury Watches. All Rights Reserved | Design by  <a href="~/http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-1.11.0.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
